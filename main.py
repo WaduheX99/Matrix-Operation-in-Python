@@ -1,188 +1,212 @@
-## FAZA FARESHA AFFANDI
-## A11.2021.13917
-## A11.43UG2
+MAX = 5
 
-def inputMatrix1(): ## fungsi untuk menginput matrix A
-    inputMatrix1.matrix1 = []
-    i1 = [0] * (9)
+# Fungsi mencetak matrix
+def tampilMatrix(matrix, jumlahBaris, jumlahKolom) :
+    for i in range(jumlahBaris) :
+        for j in range(jumlahKolom) :
+            print(matrix[i][j], end = " ")
+ 
+        print()
 
-    ## Membuat matrix kosong 3x3
-    for x1 in range(3) :
-        inputMatrix1.matrix1.append([])
-        for y1 in range(3) :
-            inputMatrix1.matrix1[x1].append(0)
-
-    ## Menginputkan elemen" matrix
-    print("Inputkan Matrix A : ")
-    m = 0
-    for x in range(0, 8 + 1, 1):
-        print("Masukkan elemen ke - " + str(x + 1))
-        i1[m] = int(input())
-        m = m + 1
-
-    ## Memasukkan elemen" yang sudah diinput ke dalam matrix kosong
-    inputMatrix1.matrix1 [0][0] = i1[0]
-    inputMatrix1.matrix1 [0][1] = i1[1]
-    inputMatrix1.matrix1 [0][2] = i1[2]
-    inputMatrix1.matrix1 [1][0] = i1[3]
-    inputMatrix1.matrix1 [1][1] = i1[4]
-    inputMatrix1.matrix1 [1][2] = i1[5]
-    inputMatrix1.matrix1 [2][0] = i1[6]
-    inputMatrix1.matrix1 [2][1] = i1[7]
-    inputMatrix1.matrix1 [2][2] = i1[8]
-    print(" ")
-
-
-def inputMatrix2(): ## fungsi untuk menginput matrix B
-    inputMatrix2.matrix2 = []
-    j1 = [0] * (9)
-    
-    ## Membuat matrix kosong 3x3
-    for x2 in range(3) :
-        inputMatrix2.matrix2.append([])
-        for y2 in range(3) :
-            inputMatrix2.matrix2[x2].append(0)
-
-    print("Inputkan Matrix B : ")
-    n = 0
-    for y in range(0, 8 + 1, 1):
-        print("Masukkan elemen ke - " + str(y + 1))
-        j1[n] = int(input())
-        n = n + 1
-
-    ## Memasukkan elemen" yang sudah diinput ke dalam matrix kosong
-    inputMatrix2.matrix2 [0][0] = j1[0]
-    inputMatrix2.matrix2 [0][1] = j1[1]
-    inputMatrix2.matrix2 [0][2] = j1[2]
-    inputMatrix2.matrix2 [1][0] = j1[3]
-    inputMatrix2.matrix2 [1][1] = j1[4]
-    inputMatrix2.matrix2 [1][2] = j1[5]
-    inputMatrix2.matrix2 [2][0] = j1[6]
-    inputMatrix2.matrix2 [2][1] = j1[7]
-    inputMatrix2.matrix2 [2][2] = j1[8]
-    print(" ")
-
-
-def cetakMatrix1(): ## fungsi untuk mencetak matrix A
-    print (" ")
-    print ("Matrix A : \n")
-    for x1 in range(3) :
-        print (inputMatrix1.matrix1[x1])
-
-    print(" ")
-
-
-def cetakMatrix2(): ## fungsi untuk mencetak matrix B
-    print (" ")
-    print ("Matrix B : \n")
-    for x2 in range(3) :
-        print (inputMatrix2.matrix2[x2])
-
-    print(" ")
-    
-
-def penjumlahan(): ## fungsi operasi penjumlahan matrix
-
-    result = [[0,0,0],
-            [0,0,0],
-            [0,0,0]]
-
-    ## Loop baris
-    for i in range (0, len(inputMatrix1.matrix1)) :
-        ## Loop Kolom
-        for j in range (0, len(inputMatrix2.matrix2)) :
-            result[i][j] = inputMatrix1.matrix1[i][j] + inputMatrix2.matrix2[i][j]
+# Menginputkan matrix
+masuk = False
+masuk2 = False
+while not masuk :
+    if __name__ == "__main__" :
+        
+        A = [[0 for i in range(MAX)]
+                for j in range(MAX)]
+        B = [[0 for i in range(MAX)]
+                for j in range(MAX)]
+        
+        # Memasukkan jumlah dimensi matrix A
+        baris1 = int(input("Masukkan jumlah baris matrix pertama : "))
+        kolom1 = int(input("Masukkan jumlah kolom matrix pertama : "))
+        
+        # Mengecek batas ordo matrix A yang dapat diinputkan
+        if baris1 > 5 or kolom1 > 5 :
+            print(" ")
+            print("Maaf batas ordo matrix yang anda masukkan telah melewati batas!")
+            print("Max ordo = 5 x 5 \n")
             
-    print("Hasil Penjumlahan Matrix : ")
+        else :
+            # Memasukkan elemen" matrix A
+            print("Masukkan elemen matrix pertama : ");
+            for i in range(baris1) :
+                for j in range(kolom1) :
+                    A[i][j] = int(input("Matrix A[" + str(i) +"][" + str(j) + "] : "))
 
-    for r in result :
-        print(r)
+            while not masuk2 :
+                # Memasukkan jumlah dimensi matrix B
+                baris2 = int(input("Masukkan jumlah baris matrix kedua : "))
+                kolom2 = int(input("Masukkan jumlah kolom matrix kedua : "))
+                
+                # Mengecek batas ordo matrix B yang dapat diinputkan
+                if baris2 > 5 or kolom2 > 5 :
+                    print("Maaf batas ordo matrix yang anda masukkan telah melewati batas!")
+                    print("Max ordo = 5 x 5 \n")
 
+                else :
+                    # Memasukkan elemen" matrix B
+                    print("Masukkan elemen matrix kedua : ");
+                    for i in range(baris2) :
+                        for j in range(kolom2) :
+                            B[i][j] = int(input("Matrix B[" + str(i) +"][" + str(j) + "] : "))
+                    masuk2 = True
+                    masuk = True
 
-def perkalian(): ## fungsi operasi perkalian matrix
+# Fungsi Menjumlahkan matrix
+def penjumlahan (baris1, kolom1, A, baris2, kolom2, B) :
+    C = [[0 for i in range(MAX)]
+            for j in range(MAX)]
 
-    result = [[0,0,0],
-            [0,0,0],
-            [0,0,0]]
+    # Mengecek apakah matrix bisa dijumlahkan
+    if baris1 != baris2 or kolom1 != kolom2 :
+        print("Operasi tidak dapat dilakukan")
+        print("Karena kedua Matrix memiliki ordo yang berbeda")
+        return
 
-    ## Loop baris
-    for i in range (len(inputMatrix1.matrix1)) :
+    for i in range (baris1) :
         ## Loop Kolom
-        for j in range (len(inputMatrix2.matrix2)) :
-            ## Loop perkalian
-            for k in range (len(inputMatrix2.matrix2)) :
-                result[i][j] += inputMatrix1.matrix1[i][k]*inputMatrix2.matrix2[k][j]
+        for j in range (kolom2) :
+            C[i][j] = A[i][j] + B[i][j]
 
-    for r in result :
+    # Mencetak hasil
+    print("Hasil penjumlahan : ")
+    tampilMatrix(C, baris1, kolom2)
+
+# Fungsi mengurangkan matrix
+def pengurangan (baris1, kolom1, A, baris2, kolom2, B) :
+    C = [[0 for i in range(MAX)]
+            for j in range(MAX)]
+
+    # Mengecek apakah matrix bisa dikurangkan
+    if baris1 != baris2 or kolom1 != kolom2 :
+        print("Operasi tidak dapat dilakukan")
+        print("Karena kedua Matrix memiliki ordo yang berbeda")
+        return
+
+    for i in range (baris1) :
+        ## Loop Kolom
+        for j in range (kolom2) :
+            C[i][j] = A[i][j] - B[i][j]
+
+    # Mencetak hasil
+    print("Hasil pengurangan : ")
+    tampilMatrix(C, baris1, kolom2)
+
+# Fungsi mengalikan matrix
+def perkalian(baris1, kolom1, A, baris2, kolom2, B) :
+                         
+    # Matrix kosong untuk mencetak hasil
+    C = [[0 for i in range(MAX)]
+            for j in range(MAX)]
+ 
+    # Mengecek apakah matrix bisa dikalikan
+    if baris2 != kolom1 :
+        print("Operasi tidak dapat dilakukan")
+        print("Karena Baris pada Matrix kedua != Kolom Matrix pertama")
+        return
+     
+    # Mengalikan 2 Matrix
+    for i in range(baris1) :
+        for j in range(kolom2) :
+            C[i][j] = 0
+            for k in range(baris2) :
+                C[i][j] += A[i][k] * B[k][j];
+ 
+    # Mencetak hasil
+    print("Hasil perkalian : ")
+    tampilMatrix(C, baris1, kolom2)
+
+# Fungsi Mentransposekan matrix
+def transpose(matrix, jumlahBaris, jumlahKolom) :
+    result = [[0 for x1 in range(jumlahBaris)] for y1 in range(jumlahKolom)]
+
+    for i in range(jumlahBaris):
+        for j in range(jumlahKolom):
+            result[j][i] = matrix[i][j]
+
+    # Mencetak hasil
+    print("Hasil Transpose : ")
+    for r in result:
         print(r)
-
-def determinan(): ## fungsi operasi determinan matrix
-    operasi = [0] * (3)
-    dt = 0
-    operasi[0] = inputMatrix1.matrix1[0][0] * (inputMatrix1.matrix1[1][1] * inputMatrix1.matrix1[2][2] - inputMatrix1.matrix1[2][1] * inputMatrix1.matrix1[1][2])
-    operasi[1] = inputMatrix1.matrix1[0][1] * (inputMatrix1.matrix1[1][0] * inputMatrix1.matrix1[2][2] - inputMatrix1.matrix1[2][0] * inputMatrix1.matrix1[1][2])
-    operasi[2] = inputMatrix1.matrix1[0][2] * (inputMatrix1.matrix1[1][0] * inputMatrix1.matrix1[2][1] - inputMatrix1.matrix1[2][0] * inputMatrix1.matrix1[1][1])
-    dt = operasi[0] - operasi[1] + operasi[2]
-    ## Output jawaban determinan
-    print (" ")
-    print ("Hasil determinan matrix A : ")
-    print (dt)
-
-
-def transpose(): ## fungsi operasi transpose matrix
-
-    result = [[0,0,0],
-            [0,0,0],
-            [0,0,0]]
-
-    for i in range(len(inputMatrix1.matrix1)):
-        for j in range(len(inputMatrix1.matrix1[0])):
-            result[j][i] = inputMatrix1.matrix1[i][j]
-
-    print("Hasil transpose Matrix A : ")
-    for r in result :
-        print (r)
-
 
 ## Masuk Ke MENU
-print("====== PROGRAM MATRIX 3X3 ======")
-print("| 1. Penjumlahan               | ")
-print("| 2. Perkalian                 | ")
-print("| 3. Determinan                | ")
-print("| 4. Transpose                 | ")
-print("| 5. Exit                      | ")
-print("================================ \n")
-print("Masukkan pilihan : \n")
+selesai = False
 
-pilih = int(input())
+while not selesai :
+    print(" ")
+    print("====== PROGRAM MATRIX 3X3 ======")
+    print("| 1. Penjumlahan               | ")
+    print("| 2. Pengurangan               | ")
+    print("| 3. Perkalian                 | ")
+    print("| 4. Transpose                 | ")
+    print("| 5. Tampil Matrix             | ")
+    print("| 6. Exit                      | ")
+    print("================================ \n")
+    print("Masukkan pilihan : \n")
 
-if pilih == 1 :
-    inputMatrix1()
-    inputMatrix2()
-    cetakMatrix1()
-    cetakMatrix2()
-    penjumlahan()
+    pilih = input()
 
-elif pilih == 2 :
-    inputMatrix1()
-    inputMatrix2()
-    cetakMatrix1()
-    cetakMatrix2()
-    perkalian()
+    if pilih == "1" :
+        print("Matrix A : ")
+        tampilMatrix(A, baris1, kolom1)
+        print("Matrix B : ")
+        tampilMatrix(B, baris2, kolom2)
+        print(" ")
+        penjumlahan(baris1, kolom1, A, baris2, kolom2, B)
 
-elif pilih == 3 :
-    inputMatrix1()
-    cetakMatrix1()
-    determinan()
+    elif pilih == "2" :
+        print("Matrix A : ")
+        tampilMatrix(A, baris1, kolom1)
+        print("Matrix B : ")
+        tampilMatrix(B, baris2, kolom2)
+        print(" ")
+        pengurangan(baris1, kolom1, A, baris2, kolom2, B)
 
-elif pilih == 4 :
-    inputMatrix1()
-    cetakMatrix1()
-    transpose()
+    elif pilih == "3" :
+        print("Matrix A : ")
+        tampilMatrix(A, baris1, kolom1)
+        print("Matrix B : ")
+        tampilMatrix(B, baris2, kolom2)
+        print(" ")
+        perkalian(baris1, kolom1, A, baris2, kolom2, B)
 
-elif pilih == 5 :
-    quit()
+    elif pilih == "4" :
+        print("======== PILIH TRANSPOSE ========")
+        print("| 1. Matrix A                   | ")
+        print("| 2. Matrix B                   | ")
+        print("================================= \n")
+        pilih2 = input()
 
-else : 
-    print("tak valid")
+        if pilih2 == "1" :
+            print("Matrix A : ")
+            tampilMatrix(A, baris1, kolom1)
+            print(" ")
+            transpose(A, baris1, kolom1)
+        
+        elif pilih2 == "2" :
+            print("Matrix B : ")
+            tampilMatrix(B, baris2, kolom2)
+            print(" ")
+            transpose(B, baris2, kolom2)
 
+        else : 
+            print("Maaf, opsi yang Anda masukkan tidak valid")
+
+    elif pilih == "5" :
+        # Mencetak matrix A
+        print("Matrix A : ")
+        tampilMatrix(A, baris1, kolom1)
+    
+        # Mencetak matrix B
+        print("Matrix B : ")
+        tampilMatrix(B, baris2, kolom2)
+    
+    elif pilih == "6" :
+        print("Keluar Program")
+        selesai = True
+
+    else : 
+        print("Maaf, opsi yang Anda masukkan tidak valid")
